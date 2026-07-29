@@ -43,7 +43,6 @@ public class ProductManagementApplication {
 				}
 				
 				case 2 -> {
-					Product product=null;
 					listAllProducts();
 					Product product=null;
 				}
