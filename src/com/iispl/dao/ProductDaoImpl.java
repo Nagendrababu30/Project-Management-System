@@ -2,7 +2,10 @@ package com.iispl.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -20,8 +23,24 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public List<Product> listAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Product> productList = new ArrayList<Product>();
+		Connection connection = null;
+		PreparedStatement prepStmt = null;
+		String selectSql = "select * from product";
+		try {
+			DataSource ds = ConnectionPool.getDataSource();
+			connection = ds.getConnection();
+			prepStmt = connection.prepareStatement(selectSql);
+			ResultSet resultSet = prepStmt.executeQuery();
+			while(resultSet.next()) {
+				productList.add(new Product(resultSet.getString(1),resultSet.getString(2),resultSet.getString(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate()));
+			}
+			connection.close();
+		}
+		catch(SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return productList;
 	}
 
 	@Override
