@@ -1,5 +1,6 @@
 package com.iispl.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.iispl.dao.ProductDao;
@@ -33,9 +34,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public boolean updateExpiryDateByCode(String productCode) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateExpiryDateByCode(String productCode, LocalDate expiryDate) {
+		
+		return productDao.updateExpiryDateByCode(productCode, expiryDate);
+		
+		
 	}
 
 }

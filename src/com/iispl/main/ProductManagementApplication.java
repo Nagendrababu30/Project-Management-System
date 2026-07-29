@@ -1,5 +1,6 @@
 package com.iispl.main;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.iispl.model.Product;
@@ -58,7 +59,19 @@ public class ProductManagementApplication {
 		
 	}
 	
-	public static void updateExpiryDateByCode(String productCode) {
+	public static void updateExpiryDateByCode(String productCode, LocalDate expiryDate) {
+		
+		boolean isUpdateExpiryDateSuccesfull = productService.updateExpiryDateByCode(productCode, expiryDate);
+		
+		if(isUpdateExpiryDateSuccesfull) {
+			
+			System.out.println("Updation Successfull");
+			
+		} else {
+			
+			System.out.println("Updation failed");
+			
+		}
 		
 	}
 	
