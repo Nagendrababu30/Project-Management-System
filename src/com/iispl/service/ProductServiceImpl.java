@@ -29,8 +29,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public boolean deleteProductByCode(String productCode) {
-		// TODO Auto-generated method stub
-		return false;
+		return productDao.deleteProductByCode(productCode);
 	}
 
 	@Override

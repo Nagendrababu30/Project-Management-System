@@ -38,6 +38,17 @@ public class ProductManagementApplication {
 	}
 	
 	public static void deleteProductByCode(String productCode) {
+		Product product =productService.getProductByCode(productCode);
+		if(product==null) {
+			System.out.println("Product doesn't exist to delete");
+			return;
+		}
+		if(productService.deleteProductByCode(productCode)) {
+			System.out.println("Product Successfully removed");
+		}else {
+			System.out.println("Product has not been removed");
+		}
+		
 		
 	}
 	
