@@ -46,7 +46,26 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public Product getProductByCode(String productCode) {
 		// TODO Auto-generated method stub
-		return null;
+		Product product = null;
+		Connection connection = null;
+		String selectSQL = "SELECT* FROM product WHERE product_code = ?";
+		PreparedStatement prepStmt = null;
+		
+		try {
+			DataSource ds = ConnectionPool.getDataSource();
+			connection = ds.getConnection();
+			prepStmt = connection.prepareStatement(selectSQL);
+			prepStmt.setString(1, productCode);
+			ResultSet resultSet = prepStmt.executeQuery();
+			
+			if(resultSet.next()) {
+			product = new Product(resultSet.getString(1),resultSet.getString(2),resultSet.getString(3),resultSet.getDate(4).toLocalDate(),resultSet.getDate(5).toLocalDate());
+		}
+		connection.close();
+	}catch (SQLException e) {
+		e.printStackTrace();
+	}
+		return product;
 	}
 
 	@Override

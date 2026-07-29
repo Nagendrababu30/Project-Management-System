@@ -34,6 +34,12 @@ public class ProductManagementApplication {
 	}
 	
 	public static void getProductByCode(String productCode) {
+		Product product = productService.getProductByCode(productCode);
+		if(product!=null) {
+			System.out.println(product.getProductCode()+"    "+product.getProductName()+"    "+product.getProductDescription()+"   "+product.getActivationDate()+"   "+product.getExpiryDate());		
+		}else {
+			System.out.println("Product Not Found");
+		}
 		
 	}
 	
