@@ -15,6 +15,14 @@ public class ProductManagementApplication {
 	}
 	
 	public static void saveProduct(Product product) {
+		ProductServiceImpl productServiceImpl=new ProductServiceImpl();
+		boolean result=productServiceImpl.saveProduct(product);
+		if(result) {
+			System.out.println("Product Saved Successfully");
+		}
+		else {
+			System.out.println("Product Not saved");
+		}
 		
 	}
 	
