@@ -1,5 +1,6 @@
 package com.iispl.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.iispl.model.Product;
@@ -14,6 +15,6 @@ public interface ProductService {
 	
 	public boolean deleteProductByCode(String productCode);
 	
-	public boolean updateExpiryDateByCode(String productCode);
+	public boolean updateExpiryDateByCode(String productCode, LocalDate expiryDate);
 	
 }
