@@ -45,6 +45,7 @@ public class ProductManagementApplication {
 				
 				case 2 -> {
 					listAllProducts();
+					Product product=null;
 				}
 					
 				case 3 -> {
