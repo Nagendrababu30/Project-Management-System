@@ -19,20 +19,18 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> listAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
+		return productDao.listAllProducts();
 	}
 
 	@Override
 	public Product getProductByCode(String productCode) {
 		// TODO Auto-generated method stub
-		return null;
+		return productDao.getProductByCode(productCode);
 	}
 
 	@Override
 	public boolean deleteProductByCode(String productCode) {
-		// TODO Auto-generated method stub
-		return false;
+		return productDao.deleteProductByCode(productCode);
 	}
 
 	@Override
