@@ -2,6 +2,7 @@ package com.iispl.main;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Scanner;
 
 import com.iispl.model.Product;
 import com.iispl.service.ProductService;
@@ -13,7 +14,75 @@ public class ProductManagementApplication {
 
 	public static void main(String[] args) {
 		
-		//Don't code anything here.
+		Scanner scanner = new Scanner(System.in);
+		
+		char goToMainMenu;
+		
+		do {
+			
+			System.out.println("1.Save Product 2.List all products 3.Get Product 4.Delete Product 5.Update Expiry Date");
+			int choice = scanner.nextInt();
+			scanner.nextLine();
+			
+			switch(choice) {
+				
+				case 1-> {
+					System.out.println("Enter Product Code: ");
+					String productCode = scanner.nextLine();
+					
+					System.out.println("Enter Product Name: ");
+					String productName = scanner.nextLine();
+					
+					System.out.println("Enter Product Descrpition: ");
+					String productDescrpition = scanner.nextLine();
+					
+					saveProduct(new Product(productCode, productName, productDescrpition, 
+							LocalDate.of(2026, 07, 27), LocalDate.now().plusYears(6)));
+				
+					
+				}
+				
+				case 2 -> {
+					listAllProducts();
+				}
+					
+				case 3 -> {
+					System.out.println("Enter Product Code: ");
+					String productCode = scanner.nextLine();
+					
+					getProductByCode(productCode);
+
+					
+				}
+					
+				case 4 -> {
+					System.out.println("Enter Product Code: ");
+					String productCode = scanner.nextLine();
+					
+					deleteProductByCode(productCode);
+				}
+				
+				case 5 -> {
+					System.out.println("Enter Product Code: ");
+					String productCode = scanner.nextLine();
+					
+					Product product = productService.getProductByCode(productCode);
+					
+					
+					updateExpiryDateByCode(productCode, product.getExpiryDate().plusYears(3));
+				}	
+				
+				
+				default -> 
+					System.out.println("Inavild Choice");
+			}
+			
+			System.out.println("Do want to continue(y/n): ");
+			goToMainMenu = scanner.next().charAt(0);
+			
+		} while(goToMainMenu == 'y' || goToMainMenu == 'Y');
+		
+		scanner.close();
 		
 	}
 	
