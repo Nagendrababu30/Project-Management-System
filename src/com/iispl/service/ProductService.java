@@ -17,4 +17,10 @@ public interface ProductService {
 	
 	public boolean updateExpiryDateByCode(String productCode, LocalDate expiryDate);
 	
+	public List<Product> getProductsOrderByCodeAsc();
+	
+	public List<Product> getProductsOrderByNameDesc();
+	
+	public List<Product> getProductsOrderByExpiryDateDesc();
+	
 }

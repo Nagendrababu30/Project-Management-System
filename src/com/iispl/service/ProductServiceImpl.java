@@ -41,4 +41,22 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 
+	@Override
+	public List<Product> getProductsOrderByCodeAsc() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Product> getProductsOrderByNameDesc() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Product> getProductsOrderByExpiryDateDesc() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
